@@ -1,24 +1,37 @@
 import React, { Component } from "react";
 import Form from "./Form";
+import Soleil from "../img/soleil.png";
 
 class Weather extends Component {
-  state = {
-    api_key: "f88720914e77c3bcd600bfee75e38960"
-  };
-  getWeather = async e => {
-    const ville = e.target.elements.ville.value;
-    const pays = e.target.elements.pays.value;
-    const firstapi = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${ville},${pays}s&appid=${this.state.api_key}&units=metric`
-    );
-    const data = await firstapi.json();
-    console.log(data);
+  state = {};
+  getDate = () => {
+    var d = new Date();
+    var jour = new Array(7);
+    jour[0] = "Dimanche";
+    jour[1] = "Lundi";
+    jour[2] = "Mardi";
+    jour[3] = "Mercredi";
+    jour[4] = "Jeudi";
+    jour[5] = "Vendredi";
+    jour[6] = "Samedi";
+    var n = jour[d.getDay()];
+    return n;
   };
   render() {
     return (
       <React.Fragment>
-        <Form getWeather={this.getWeather}></Form>
-        <h1>TEMPERATURE</h1>
+        <article className="box weather">
+          <div className="icon bubble black">
+            <div className="spin">
+              <img src={Soleil} />
+            </div>
+          </div>
+          <h1>{this.getDate()}</h1>
+          <span className="temp">{this.props.temperature}&deg;C</span>
+          <span className="high-low">
+            {this.props.humidite} hPa/ {this.props.pression}%
+          </span>
+        </article>
       </React.Fragment>
     );
   }

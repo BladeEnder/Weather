@@ -1,22 +1,97 @@
-.App {
+html {
+  font-family: "Roboto Slab", sans-serif;
+}
+
+body {
+  background: #ff8080;
+  color: #313e48;
+}
+
+img {
+  max-width: 100%;
+}
+
+.box {
+  margin: 1em auto;
+  background: #c6f1d6;
+  padding: 2em 0;
+  width: 300px;
+  border-radius: 3px;
+  box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.25);
+}
+.box:hover {
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+}
+.box h1 {
+  font-size: 2em;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
+.box .temp {
+  font-size: 7em;
+  line-height: 1;
+  color: #1fab89;
+  text-align: center;
+  display: block;
+  padding-left: 30px;
+  margin-bottom: 24px;
+}
+.box .high-low {
+  font-size: 2em;
+  color: #1fab89;
+  text-align: center;
+  display: block;
+  font-weight: 100;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.weather .icon {
+  position: relative;
+  margin: 0 auto;
 }
 
-.App-link {
-  color: #09d3ac;
+.spin {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  text-align: center;
+  width: 65px;
+}
+
+.bubble.black {
+  background-color: #313e48;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  padding: 0px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+}
+
+.bubble.black:after {
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  left: 14px;
+  border-style: solid;
+  border-width: 29px 15px 0;
+  border-color: #313e48 transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  transform: rotate(30deg);
+}
+
+.spin img {
+  animation: spin 5s linear infinite;
+  animation-play-state: paused;
+}
+
+.box:hover .spin img {
+  animation-play-state: running;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(1turn);
+  }
 }
